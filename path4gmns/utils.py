@@ -271,7 +271,8 @@ def read_nodes(input_dir,
 
             # set up zone_id
             try:
-                zone_id = line['zone_id']
+                # zone_id = line['zone_id']
+                zone_id = str(_convert_str_to_int(line['zone_id']))
             except KeyError:
                 zone_id = ''
 
@@ -533,8 +534,8 @@ def read_demand(input_dir,
                 column_pool,
                 check_connectivity=True):
     """ step 3:read input_agent """
-    with open(input_dir+'/'+file, 'r') as fp:
-        print('read '+file)
+    with open(f'{input_dir}/{file}', 'r') as fp:
+        print(f'read {file}')
 
         at = agent_type_id
         dp = demand_period_id
@@ -545,12 +546,14 @@ def read_demand(input_dir,
         invalid_vol = 0
         invalid_od_num = 0
         for line in reader:
-            oz_id = line['o_zone_id']
+            # oz_id = line['o_zone_id']
+            oz_id = str(_convert_str_to_int(line['o_zone_id']))
             # o_zone_id does not exist in node.csv, discard it
             if oz_id not in zones.keys():
                 continue
 
-            dz_id = line['d_zone_id']
+            # dz_id = line['d_zone_id']
+            dz_id = str(_convert_str_to_int(line['d_zone_id']))
             # d_zone_id does not exist in node.csv, discard it
             if dz_id not in zones.keys():
                 continue
