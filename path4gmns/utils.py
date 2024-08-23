@@ -271,8 +271,8 @@ def read_nodes(input_dir,
 
             # set up zone_id
             try:
-                # zone_id = line['zone_id']
-                zone_id = str(_convert_str_to_int(line['zone_id']))
+                zone_id = line['zone_id']
+                # zone_id = str(_convert_str_to_int(line['zone_id']))
             except KeyError:
                 zone_id = ''
 
